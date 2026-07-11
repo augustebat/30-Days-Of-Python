@@ -1,4 +1,3 @@
-"""
 # 1. Declare your age as integer variable
 my_age = 21
 
@@ -67,7 +66,7 @@ print(slope == slope2)
 # x = -3
 x = int(input("Iveskite x reiksme:"))
 y = x**2 + 6*x + 9
-print("lygties rezultatas: ", y
+print("lygties rezultatas: ", y)
 
 # 12. Find the length of 'python' and 'dragon' and make a falsy comparison statement.
 pitono_ilgis = len('python')
@@ -117,7 +116,7 @@ print("Visas atlyginimas: ", earning)
 # 22. Write a script that prompts the user to enter number of years. Calculate the number of seconds a person can live. Assume a person can live hundred years
 years = int(input("Iveskite kiek metu nugyvenote:" ))
 sekundes = years * 365 * 24 * 60 * 60
-print(f"Gyvenate {sekundes} sekundziu.")"""
+print(f"Gyvenate {sekundes} sekundziu.")
 
 # 23. Write a Python script that displays the following table
 # 1 1 1 1 1
