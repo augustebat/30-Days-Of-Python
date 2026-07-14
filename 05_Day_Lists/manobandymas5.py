@@ -1,3 +1,4 @@
+#-----------Level 1-----------
 #1 Declare an empty list
 tuscias = []
 
@@ -103,3 +104,51 @@ indeksas = full_stack.index('Redux')
 full_stack.insert(indeksas+1, 'Python')
 full_stack.insert(indeksas+2, 'SQL')
 print(full_stack)
+
+
+
+#-----------Level 2-----------
+
+#1 The following is a list of 10 students ages:
+ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+print("\n\n")
+print(ages)
+
+# Sort the list and find the min and max age
+ages.sort()
+print('\nSorted list:')
+print(ages)
+min_age = ages[0]
+max_age = ages[-1]
+print(f'\nMin age: {min_age}')
+print(f'Max age: {max_age}')
+
+# Add the min age and the max age again to the list
+ages.append(min_age)
+ages.append(max_age)
+print()
+print(ages)
+
+# Find the median age (one middle item or two middle items divided by two)
+ages.sort()
+middle1 = ages[5]
+middle2 = ages[6]
+median_age = (middle1+middle2)/2
+print(f"Mediana: {median_age}")
+
+# Find the average age (sum of all items divided by their number )
+average_age = sum(ages) / len(ages)
+print(f"Vidurkis: {average_age}")
+
+# Find the range of the ages (max minus min)
+# Kadangi sąrašą vėl išrikiavome, min_age yra ages[0], o max_age yra ages[-1]
+age_range = max_age - min_age
+print(f"Amziaus rezis (Range): {age_range}")
+
+# Compare the value of (min - average) and (max - average), use abs() method
+min_diff = abs(ages[0] - average_age)
+max_diff = abs(ages[-1] - average_age)
+
+print(f"Skirtumas (min - average) moduliniu dydziu: {min_diff:.2f}")
+print(f"Skirtumas (max - average) moduliniu dydziu: {max_diff:.2f}")
+print(f"Ar min skirtumas yra didesnis uz max skirtuma? {min_diff > max_diff}")
