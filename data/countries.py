@@ -195,3 +195,14 @@ countries = [
   'Zambia',
   'Zimbabwe'
 ];
+
+#-----------Level 3-----------
+#1 Go to the data folder and use the countries.py file. Loop through the countries and extract all the countries containing the word land.
+
+land_countries = []
+for country in countries:
+    if 'land' in country.lower():
+        land_countries.append(country)
+        print(country)
+
+print(f"\nIš viso rasta šalių su 'land': {len(land_countries)}")

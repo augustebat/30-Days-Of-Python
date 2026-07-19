@@ -1,4 +1,4 @@
-[
+countries_data = [
     {
         "name": "Afghanistan",
         "capital": "Kabul",
@@ -2618,3 +2618,29 @@
         "currency": "Botswana pula"
     }
 ]
+
+# What are the total number of languages in the data?
+unique_languages = set()
+for country in countries_data:
+    for lang in country['languages']:
+        unique_languages.add(lang)
+print(f"Iš viso unikalių kalbų pasaulyje: {len(unique_languages)}")
+
+# Find the ten most spoken languages from the data
+language_counts = {}
+for country in countries_data:
+    for lang in country['languages']:
+        if lang in language_counts:
+            language_counts[lang] += 1  
+        else:
+            language_counts[lang] = 1   
+sorted_languages = sorted(language_counts.items(), key=lambda x: x[1], reverse=True)
+print("\n10 dažniausiai vartojamų kalbų:")
+for lang, count in sorted_languages[:10]:
+    print(f"- {lang}: vartojama {count} šalyse")
+
+# Find the 10 most populated countries in the world
+sorted_countries = sorted(countries_data, key=lambda x: x['population'], reverse=True)
+print("\n10 didžiausių šalių pagal gyventojų skaičių:")
+for country in sorted_countries[:10]:
+    print(f"- {country['name']}: {country['population']} gyventojų")

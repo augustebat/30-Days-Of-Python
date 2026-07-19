@@ -101,4 +101,43 @@ for i in range(101):
         print(i)
 
 
+
+
 #-----------Level 2-----------
+
+#1 Use for loop to iterate from 0 to 100 and print the sum of all numbers.
+# The sum of all numbers is 5050.
+sum = 0
+i = 0
+for i in range(101):
+    sum+=i
+
+print(f'The sum of all numbers is {sum}.')
+
+#2 Use for loop to iterate from 0 to 100 and print the sum of all evens and the sum of all odds.
+# The sum of all evens is 2550. And the sum of all odds is 2500.
+
+evens_sum = 0
+odds_sum = 0
+i=0
+for i in range(101):
+    if i % 2 == 0:
+        evens_sum+=i
+    else:
+        odds_sum+=i
+
+print(f'The sum of all evens is {evens_sum}. And the sum of all odds is {odds_sum}.')
+
+
+#-----------Level 3-----------
+
+#2 This is a fruit list, ['banana', 'orange', 'mango', 'lemon'] reverse the order using loop.
+fruits = ['banana', 'orange', 'mango', 'lemon']
+reversed_list = []
+
+for fruit in fruits:
+    reversed_list.insert(0, fruit)
+print(fruits)
+print(reversed_list)
+
+
