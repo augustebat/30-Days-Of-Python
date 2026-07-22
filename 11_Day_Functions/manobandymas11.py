@@ -186,3 +186,189 @@ def sum_of_even(num):
 print(sum_of_even(5))  
 print(sum_of_even(10)) 
 print(sum_of_even(100)) 
+
+
+
+#-----------Level 2-----------
+#1 Declare a function named evens_and_odds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
+def evens_and_odds(number):
+    count_evens = 0
+    count_odds = 0
+    for i in range(0, number+1):
+        if i % 2 == 0:
+            count_evens += 1
+        else:
+            count_odds+=1
+    return f"The number of odds are {count_odds}.\nThe number of evens are {count_evens}."
+
+print(evens_and_odds(100))
+
+#2 Call your function factorial, it takes a whole number as a parameter and it return a factorial of the number
+def factorial(number):
+    fakt = 1
+    for i in range(1, number+1):
+        fakt *= i
+    return f'Skaiciaus {number} faktorialas yra: {fakt}'
+
+print(factorial(5))
+
+#3 Call your function is_empty, it takes a parameter and it checks if it is empty or not
+def is_empty(param=None):
+    if not param:  # Jei 'param' yra tuščias (False)
+        return True
+    else:          # Jei 'param' turi reikšmę (True)
+        return False
+
+print(is_empty([]))        
+print(is_empty(""))        
+print(is_empty("Labas"))   
+print(is_empty([1, 2, 3])) 
+
+
+#4 Write different functions which take lists. They should calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std (standard deviation).
+def calculate_mean(lst):
+    if not lst:
+        return None
+    return sum(lst) / len(lst)
+
+def calculate_median(lst):
+    if not lst:
+        return None
+    sorted_lst = sorted(lst)
+    n = len(sorted_lst)
+    mid = n // 2
+    
+    if n % 2 != 0:
+        return sorted_lst[mid]
+    else:
+        return (sorted_lst[mid - 1] + sorted_lst[mid]) / 2
+    
+def calculate_mode(lst):
+    if not lst:
+        return None
+    
+    counts = {}
+    for item in lst:
+        counts[item] = counts.get(item, 0) + 1
+        
+    max_count = max(counts.values())
+    modes = [k for k, v in counts.items() if v == max_count]
+    
+    if max_count == 1:
+        return "Modos nėra (visi skaičiai unikalūs)"
+    
+    return modes if len(modes) > 1 else modes[0]
+
+def calculate_range(lst):
+    if not lst:
+        return None
+    return max(lst) - min(lst)
+
+def calculate_variance(lst):
+    if not lst or len(lst) < 2:
+        return 0
+    
+    mean = calculate_mean(lst)
+    variance = sum((x - mean) ** 2 for x in lst) / len(lst)
+    return variance
+
+def calculate_std(lst):
+    if not lst:
+        return None
+    variance = calculate_variance(lst)
+    return variance ** 0.5 
+
+data = [4, 7, 3, 8, 1, 7, 9, 7, 2]
+print(f"Duomenys: {data}")
+print(f"Vidurkis (Mean): {calculate_mean(data):.2f}")
+print(f"Mediana (Median): {calculate_median(data)}")
+print(f"Moda (Mode): {calculate_mode(data)}")
+print(f"Plotis (Range): {calculate_range(data)}")
+print(f"Dispersija (Variance): {calculate_variance(data):.2f}")
+print(f"Standartinis nuokrypis (Std Dev): {calculate_std(data):.2f}")
+
+#5 Write a function called greet which takes a default argument, name. If no argument is supplied it should print "Hello, Guest!", otherwise it should greet the person by name.
+"""
+    greet()
+    # "Hello, Guest!
+    greet("Alice")
+    # "Hello, Alice!"
+"""
+def greet(name = None):
+    if not name:
+        return "Hello, Guest!"
+    else:
+        return f'Hello, {name}'
+    
+print(greet())
+print(greet('Alice'))
+
+#6 Create a function called show_args to take an arbitrary number of named arguments and print their names and values.
+"""
+show_args(name="Alice", age=30, city="New York")
+# Received: name: Alice, age: 30, city: New York
+show_args(name="Bob", pet="Fluffy, the bunny")
+# Received: name: Bob, pet: Fluffy, the bunny
+"""
+def show_args(**args):
+    formatted_items = [f"{k}: {v}" for k, v in args.items()]
+    print(f"Received: {', '.join(formatted_items)}")
+
+show_args(name="Alice", age=30, city="New York") # Received: name: Alice, age: 30, city: New York
+show_args(name="Bob", pet="Fluffy, the bunny") # Received: name: Bob, pet: Fluffy, the bunny
+
+
+
+
+#-----------Level 3-----------
+#1 Write a function called is_prime, which checks if a number is prime.
+def is_prime(n):
+    if n <= 1:
+        return False
+    
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+        
+    return True
+
+print(is_prime(1))   # False
+print(is_prime(2))   # True
+print(is_prime(7))   # True
+print(is_prime(10))  # False
+print(is_prime(13))  # True
+
+#2 Write a functions which checks if all items are unique in the list.
+def check_unique(lst):
+    return len(lst) == len(set(lst))
+
+print(check_unique([1, 2, 3, 4, 5]))  
+print(check_unique([1, 2, 2, 4, 5]))  
+
+#3 Write a function which checks if all the items of the list are of the same data type.
+def check_same_type(lst):
+    if not lst:
+        return True 
+    first_type = type(lst[0])
+    for item in lst:
+        if type(item) != first_type:
+            return False
+            
+    return True
+
+print(check_same_type([1, 2, 3, 4]))       
+print(check_same_type(['a', 'b', 'c']))     
+print(check_same_type([1, '2', 3, 4]))       
+
+#4 Write a function which check if provided variable is a valid python variable
+import keyword
+def is_valid_variable(var_name):
+    if isinstance(var_name, str) and var_name.isidentifier() and not keyword.iskeyword(var_name):
+        return True
+    return False
+
+print(is_valid_variable("my_variable"))  
+print(is_valid_variable("var123"))       
+print(is_valid_variable("123var"))       
+print(is_valid_variable("my-var"))       
+print(is_valid_variable("def"))         
