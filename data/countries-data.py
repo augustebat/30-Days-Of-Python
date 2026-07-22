@@ -2644,3 +2644,35 @@ sorted_countries = sorted(countries_data, key=lambda x: x['population'], reverse
 print("\n10 didžiausių šalių pagal gyventojų skaičių:")
 for country in sorted_countries[:10]:
     print(f"- {country['name']}: {country['population']} gyventojų")
+
+
+# Create a function called the most_spoken_languages in the world. 
+# It should return 10 or 20 most spoken languages in the world in descending order
+def most_spoken_languages(data, count=10):
+    kartai = {}
+    for country in data: # einama per kiekviena sali
+        for lang in country['languages']: # einama per kiekviena tos salies kalba
+            if lang in kartai:
+                kartai[lang] += 1
+            else:
+                kartai[lang] = 1
+
+    # rikiuojame nuo didziausio, rikiuojama pagal antra elementa
+    sorted_languages = sorted(kartai.items(), key=lambda x: x[1], reverse=True)
+    return sorted_languages[:count]
+
+top_10 = most_spoken_languages(countries_data, 10)
+print("10 dažniausiai vartojamų kalbų:")
+for lang, count in top_10:
+    print(f"- {lang}: vartojama {count} šalyse")
+
+# Create a function called the most_populated_countries. 
+# It should return 10 or 20 most populated countries in descending order.
+gyventojai = {}
+def most_populated_countries(data, count = 10):
+    gyventoju_sk = sorted(data, key=lambda x: x['population'], reverse = True)
+    for country in gyventoju_sk[:count]:
+        print(f"- {country['name']}: {country['population']} gyventojų")
+
+most_populated_countries(countries_data,10)
+        
